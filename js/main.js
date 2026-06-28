@@ -223,6 +223,18 @@ function initFaq() {
 }
 
 // Boot
+
+function initExpandBtns() {
+  document.querySelectorAll('.expand-btn').forEach(function(btn) {
+    btn.addEventListener('click', function() {
+      var card = this.closest('.board-card');
+      var bio = card.querySelector('.bio-content');
+      var isOpen = bio.classList.toggle('open');
+      this.setAttribute('aria-expanded', String(isOpen));
+      this.querySelector('.expand-icon').textContent = isOpen ? '−' : '+';
+    });
+  });
+}
 document.addEventListener('DOMContentLoaded', () => {
   injectLayout();
   setActiveNav();
@@ -231,4 +243,5 @@ document.addEventListener('DOMContentLoaded', () => {
   initTabs();
   initUpiModal();
   initFaq();
+  initExpandBtns();
 });
