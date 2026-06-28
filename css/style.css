@@ -367,3 +367,22 @@ p  { font-size: .95rem; color: var(--mid); }
   color: var(--mid);
   margin-bottom: 0 !important;
 }
+
+/* ── Board card bio collapse ──────────────────────────────── */
+.bio-content { display:none; text-align:left; padding:.6rem 0 0; margin-top:.5rem; border-top:1px solid rgba(0,0,0,.07); font-size:.82rem; color:var(--mid); }
+.bio-content.open { display:block; }
+.expand-btn { margin-top:.4rem; background:none; border:1px solid var(--pink); color:var(--pink); border-radius:2rem; padding:.2rem .75rem; font-size:.78rem; cursor:pointer; }
+.expand-btn:hover { background:var(--pink); color:#fff; }
+
+/* ── Annual report inline layout ─────────────────────────── */
+.report-item { display:flex; align-items:center; justify-content:space-between; gap:1rem; padding:1rem 0; border-bottom:1px solid rgba(0,0,0,.08); }
+.report-item:last-child { border-bottom:none; }
+.report-dl { font-size:1.4rem; text-decoration:none; color:var(--teal); flex-shrink:0; padding:.4rem .6rem; border-radius:50%; background:var(--teal-pale); transition:background .2s; }
+.report-dl:hover { background:var(--teal); color:#fff; }
+
+/* ── Life at Aarti Village card text ─────────────────────── */
+.life-card { text-align:center; }
+.life-card p { text-align:left; }
+
+/* ── Humans volunteer CTA – text colour fix ─────────────── */
+.volunteer-cta h2, .volunteer-cta p, .volunteer-cta blockquote { color:var(--dark) !important; }
