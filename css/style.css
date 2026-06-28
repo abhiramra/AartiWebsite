@@ -343,3 +343,27 @@ p  { font-size: .95rem; color: var(--mid); }
   .stat-num { font-size: 1.6rem; }
   .voices-grid { grid-template-columns: repeat(2,1fr); }
 }
+
+/* ── Voice story page formatting ───────────────────────────── */
+.section .container p { margin-bottom: 1.25rem; }
+.section .container p:last-child { margin-bottom: 0; }
+.story-highlight {
+  border-left: 4px solid var(--pink);
+  padding: 1.25rem 1.5rem;
+  margin: 2rem 0;
+  background: rgba(209,64,129,0.06);
+  border-radius: 0 var(--r) var(--r) 0;
+}
+.story-highlight h3 {
+  font-size: 1.15rem;
+  font-style: italic;
+  font-weight: 600;
+  line-height: 1.7;
+  margin-bottom: 0.75rem;
+  color: var(--dark);
+}
+.story-highlight p {
+  font-size: 0.92rem;
+  color: var(--mid);
+  margin-bottom: 0 !important;
+}
