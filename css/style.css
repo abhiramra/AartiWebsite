@@ -1,5 +1,5 @@
 /* =====================
-   AARTI FOR GIRLS — style.css v1.0
+   AARTI FOR GIRLS â style.css v1.0
    ===================== */
 
 /* ---------- TOKENS ---------- */
@@ -101,7 +101,7 @@ p  { font-size: .95rem; color: var(--mid); }
 /* ---------- HERO ---------- */
 .hero { position: relative; overflow: hidden; display: flex; align-items: center; min-height: 400px; }
 .hero-tall { min-height: 500px; }
-.hero-img { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; object-position: center top; }
+.hero-img { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; object-position: center center; }
 .hero-overlay { position: absolute; inset: 0; background: linear-gradient(to right, rgba(20,20,20,.72) 30%, rgba(20,20,20,.25) 100%); }
 .hero-body { position: relative; z-index: 1; padding: 4rem 1.5rem; max-width: min(700px,90%); margin-left: max(1.5rem,calc(50% - 560px)); }
 .hero-body h1 { color: var(--white); }
