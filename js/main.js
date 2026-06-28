@@ -1,5 +1,5 @@
 // =====================
-// AARTI FOR GIRLS — main.js
+// AARTI FOR GIRLS â main.js
 // =====================
 
 const NAV_HTML = `
@@ -197,7 +197,7 @@ function initUpiModal() {
       <button class="modal-close" aria-label="Close">&times;</button>
       <h3>Scan to Donate via UPI</h3>
       <p>Vijay Foundation Trust Association</p>
-      <img src="assets/images/upi-qr.png" alt="UPI QR Code">
+      <img src="assets/images/upi-qr.jpg" alt="UPI QR Code">
       <p style="font-size:.78rem;margin-top:.5rem;">Scan with any UPI app &mdash; Google Pay, PhonePe, Paytm, etc.</p>
     </div>`;
   document.body.appendChild(overlay);
