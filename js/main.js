@@ -1,5 +1,5 @@
 // =====================
-// AARTI FOR GIRLS â main.js
+// AARTI FOR GIRLS Ã¢ÂÂ main.js
 // =====================
 
 const NAV_HTML = `
@@ -112,7 +112,7 @@ const FOOTER_HTML = `
     </div>
   </div>
   <div class="footer-bottom">
-    <p>Copyright &copy; Aarti For Girls 2025. Developed with &hearts; by <a href="https://www.firebrandlabs.in/" target="_blank" rel="noopener" style="color:rgba(255,255,255,.6);">Firebrand Labs</a>.</p>
+    <p>Copyright &copy; Aarti For Girls 2025.</p>
     <p style="font-size:.72rem;color:rgba(255,255,255,.35);">Vijay Foundation Trust Association &mdash; FCRA Reg. No. 010050098</p>
   </div>
 </footer>`;
