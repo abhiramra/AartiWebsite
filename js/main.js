@@ -62,8 +62,8 @@ const FOOTER_HTML = `
   <div class="footer-inner">
     <div class="footer-logo">
       <a href="index.html"><img src="assets/images/logo.png" alt="Aarti For Girls"></a>
-      <p class="footer-address" style="color:rgba(255,255,255,.6);margin-top:.6rem;">Vijay Foundation Trust Association<br>D.No. 1/713, Dwarakanagar,<br>Kadapa, Y.S.R. District &ndash; 516 004<br>Andhra Pradesh, India</p>
-      <p style="margin-top:.5rem;font-size:.8rem;"><a href="mailto:aartihome@aartiforgirls.org" style="color:rgba(255,255,255,.6);">aartihome@aartiforgirls.org</a></p>
+      <p class="footer-address" style="color:var(--mid);margin-top:.6rem;">Vijay Foundation Trust Association<br>D.No. 1/713, Dwarakanagar,<br>Kadapa, Y.S.R. District &ndash; 516 004<br>Andhra Pradesh, India</p>
+      <p style="margin-top:.5rem;font-size:.8rem;"><a href="mailto:aartihome@aartiforgirls.org" style="color:var(--mid);">aartihome@aartiforgirls.org</a></p>
       <div class="footer-socials" style="margin-top:.75rem;">
         <a href="https://www.facebook.com/AartiHome/" target="_blank" rel="noopener" aria-label="Facebook">f</a>
         <a href="https://www.instagram.com/aartiforgirls/" target="_blank" rel="noopener" aria-label="Instagram">&#9650;</a>
@@ -115,7 +115,7 @@ const FOOTER_HTML = `
   </div>
   <div class="footer-bottom">
     <p>Copyright &copy; Aarti For Girls 2025.</p>
-    <p style="font-size:.72rem;color:rgba(255,255,255,.35);">Vijay Foundation Trust Association &mdash; FCRA Reg. No. 010050098</p>
+    <p style="font-size:.72rem;color:var(--muted);">Vijay Foundation Trust Association &mdash; FCRA Reg. No. 010050098</p>
   </div>
 </footer>`;
 
