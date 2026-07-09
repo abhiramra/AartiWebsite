@@ -110,18 +110,26 @@
 | `blog-careers.jpg`, `blog-literacy.jpg`, `blog-foeticide.jpg`, `blog-infanticide.jpg`, `blog-vocational.jpg`, `blog-newsletter-nov.jpg`, `blog-newsletter-dec.jpg`, `blog-stigma-thumb.jpg` | news-blog.html |
 | `blog-1.jpg` | index.html preview |
 
-### "Aarti at a Glance" Icons (for home page)
-The home page now shows 4 items — Aarti Village, Aarti School, Family-Based Care,
-Aarti Women's Centre — all currently using a shared placeholder graphic below.
-Replace with real icons when ready (same slot for all four: pink outline style, ~60×60px).
+### "Aarti at a Glance" Photos (for home page)
+The home page shows 4 items — Aarti Village, Aarti School, Family-Based Care,
+Aarti Women's Centre — each a circular photo (100x100 ring, cropped to a
+circle via CSS). Village and School now use real photos; Family-Based Care
+and Aarti Women's Centre are still on the placeholder pending photos.
 
-| Filename | Icon |
+| Filename | Used for |
 |----------|------|
-| `icon-placeholder.svg` | Temporary placeholder used for all 4 items on the home page |
+| `pillar-village.jpg` | Aarti Village |
+| `pillar-school.jpg` | Aarti School |
+| `icon-placeholder.svg` | Family-Based Care & Aarti Women's Centre (temporary, pending real photos) |
 | `icon-care.png` | Unused (previously the Care pillar icon) |
 | `icon-educate.png` | Unused (previously the Educate pillar icon) |
 | `icon-empower.png` | Unused (previously the Empower pillar icon) |
 | `icon-advocate.png` | Unused (previously the Advocate pillar icon; Advocate item removed from home page) |
+
+### Our Founder Section (for home page)
+| Filename | Used for |
+|----------|------|
+| `founder-with-girls.jpg` | Sandhya Puchalapalli with girls at Aarti Home |
 
 ---
 

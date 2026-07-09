@@ -115,7 +115,7 @@ p  { font-size: .95rem; color: var(--mid); }
 .pillars-row { display: flex; justify-content: center; gap: 2rem; flex-wrap: wrap; margin-top: 2rem; }
 .pillar-wrap { display: flex; flex-direction: column; align-items: center; text-align: center; flex: 1; min-width: 160px; max-width: 200px; }
 .pillar-ring { width: 100px; height: 100px; border-radius: 50%; background: var(--teal-pale); display: flex; align-items: center; justify-content: center; margin-bottom: .9rem; border: 3px solid var(--teal); overflow: hidden; }
-.pillar-ring img { width: 64px; height: 64px; object-fit: contain; }
+.pillar-ring img { width: 100%; height: 100%; object-fit: cover; border-radius: 50%; }
 .pillar-wrap h3 { font-size: 1rem; margin-bottom: .2rem; }
 .pillar-wrap p  { font-size: .82rem; color: var(--muted); margin: 0; }
 
