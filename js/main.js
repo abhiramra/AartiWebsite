@@ -50,7 +50,7 @@ const NAV_HTML = `
 const FOOTER_HTML = `
 <section class="cta-section">
   <div class="cta-inner">
-    <img class="cta-img" src="assets/images/cta-girls.jpg" alt="Two Aarti girls laughing together">
+    <img class="cta-img" src="assets/images/footer-illustration.png" alt="Two Aarti girls laughing together">
     <div class="cta-text">
       <h2>Success follows opportunity.</h2>
       <p>Every child deserves an equal chance at life, education, and happiness. Aarti for Girls ensures this.</p>

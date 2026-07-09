@@ -13,7 +13,8 @@
 | Filename | Used on | Notes |
 |----------|---------|-------|
 | `logo.png` | Every page (nav + browser tab) | Full logo with flamingo icon + text, transparent bg |
-| `cta-girls.jpg` | Every page footer | Two girls laughing together — used as circular photo in the teal CTA section |
+| `footer-illustration.png` | Every page footer | Two girls laughing together (cutout illustration w/ transparent bg + teal circle accent) — used in the pre-footer CTA band |
+| `cta-girls.jpg` | Unused (previous pre-footer image) |
 | `upi-qr.png` | Donate page modal | UPI QR code for Vijay Foundation Trust Association |
 
 ### Hero Images
