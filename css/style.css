@@ -347,6 +347,10 @@ p  { font-size: .95rem; color: var(--mid); }
   .voices-grid { grid-template-columns: repeat(2,1fr); }
 }
 
+/* ---------- STORY / ABOUT PAGE ---------- */
+.page-story .section, .page-story .section-sm { padding: 3rem 0; }
+@media (max-width: 768px) { .page-story .section, .page-story .section-sm { padding: 2.25rem 0; } }
+
 /* ── Voice story page formatting ───────────────────────────── */
 .founding-photo-wrap { position: relative; overflow: hidden; border-radius: var(--r-l); box-shadow: var(--sh-hov); }
 .founding-photo-img { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; object-position: center bottom; }
