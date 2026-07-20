@@ -12,8 +12,7 @@ const NAV_HTML = `
       <li class="has-drop">
         <button aria-expanded="false" aria-haspopup="true">About <span class="nav-chevron">&#9660;</span></button>
         <ul class="nav-drop">
-          <li><a href="about-history.html">Our History</a></li>
-          <li><a href="about-mission.html">Mission, Vision &amp; Core Values</a></li>
+          <li><a href="about-history.html">Our Story &amp; Mission</a></li>
           <li><a href="about-milestones.html">Milestones</a></li>
           <li><a href="about-voicesofaarti.html">Voices of Aarti</a></li>
           <li><a href="about-aartivillage.html">Aarti Village</a></li>
@@ -75,8 +74,7 @@ const FOOTER_HTML = `
     <div>
       <h4>About</h4>
       <ul>
-        <li><a href="about-history.html">Our History</a></li>
-        <li><a href="about-mission.html">Mission &amp; Vision</a></li>
+        <li><a href="about-history.html">Our Story &amp; Mission</a></li>
         <li><a href="about-milestones.html">Milestones</a></li>
         <li><a href="about-voicesofaarti.html">Voices of Aarti</a></li>
         <li><a href="about-aartivillage.html">Aarti Village</a></li>
