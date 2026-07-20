@@ -162,6 +162,17 @@ p  { font-size: .95rem; color: var(--mid); }
 .video-wrap iframe, .video-wrap img { position: absolute; inset: 0; width: 100%; height: 100%; border: 0; object-fit: cover; }
 .videos-grid { display: grid; grid-template-columns: repeat(2,1fr); gap: 1.5rem; }
 .video-label { text-align: center; font-size: .85rem; font-weight: 600; color: var(--mid); margin-top: .6rem; }
+.vol-slider { max-width: 720px; margin: 0 auto; }
+.vol-stage { position: relative; }
+.vol-slide { display: none; }
+.vol-slide.is-active { display: block; }
+.vol-arrow { position: absolute; top: 50%; transform: translateY(-50%); z-index: 2; width: 44px; height: 44px; border-radius: 50%; background: rgba(255,255,255,.92); color: var(--dark); font-size: 1.6rem; line-height: 1; display: flex; align-items: center; justify-content: center; box-shadow: var(--sh); transition: background .15s, transform .15s; }
+.vol-arrow:hover { background: var(--white); }
+.vol-prev { left: .6rem; }
+.vol-next { right: .6rem; }
+.vol-dots { display: flex; justify-content: center; gap: .5rem; margin-top: 1.1rem; }
+.vol-dot { width: 10px; height: 10px; border-radius: 50%; background: var(--border); padding: 0; transition: background .15s; }
+.vol-dot.is-active { background: var(--pink); }
 
 /* ---------- ICON CARDS ---------- */
 .icon-card { background: var(--white); border-radius: var(--r-l); padding: 1.5rem 1.2rem; box-shadow: var(--sh); transition: transform .2s, box-shadow .2s; }
@@ -191,7 +202,9 @@ p  { font-size: .95rem; color: var(--mid); }
 .tab-panel.active { display: block; }
 
 /* ---------- VOLUNTEER ---------- */
-.vol-hero-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 3rem; align-items: start; }
+.vol-hero-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 3rem; align-items: stretch; }
+.vol-hero-photo { position: relative; border-radius: var(--r-l); overflow: hidden; box-shadow: var(--sh-hov); background: var(--teal-pale); min-height: 320px; }
+.vol-hero-photo img { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; }
 .vol-modes { display: grid; grid-template-columns: 1fr 1fr; gap: 1.5rem; }
 .vol-mode-card { background: var(--white); border-radius: var(--r-l); padding: 2rem; box-shadow: var(--sh); border-top: 4px solid var(--teal); }
 .vol-mode-card h3 { margin-bottom: .75rem; }
@@ -327,6 +340,8 @@ p  { font-size: .95rem; color: var(--mid); }
   .donate-intro img { max-width: 100%; }
   .donate-cards,.modes-grid { grid-template-columns: 1fr; }
   .vol-hero-grid,.vol-modes { grid-template-columns: 1fr; }
+  .vol-hero-photo { position: static; min-height: 0; }
+  .vol-hero-photo img { position: static; width: 100%; height: auto; aspect-ratio: 4/3; }
   .videos-grid { grid-template-columns: 1fr; }
   .village-gallery { grid-template-columns: repeat(2,1fr); }
   .milestone-cards { grid-template-columns: 1fr; }

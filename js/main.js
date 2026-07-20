@@ -233,6 +233,27 @@ function initExpandBtns() {
     });
   });
 }
+function initVolunteerSlider() {
+  const slider = document.querySelector('.vol-slider');
+  if (!slider) return;
+  const slides = [...slider.querySelectorAll('.vol-slide')];
+  const dots = [...slider.querySelectorAll('.vol-dot')];
+  let i = 0;
+  function show(n) {
+    const prev = i;
+    i = (n + slides.length) % slides.length;
+    if (prev !== i) {
+      const leaving = slides[prev].querySelector('iframe');
+      if (leaving) leaving.src = leaving.src; // reload to stop playback/audio
+    }
+    slides.forEach((s, idx) => s.classList.toggle('is-active', idx === i));
+    dots.forEach((d, idx) => d.classList.toggle('is-active', idx === i));
+  }
+  slider.querySelector('.vol-prev').addEventListener('click', () => show(i - 1));
+  slider.querySelector('.vol-next').addEventListener('click', () => show(i + 1));
+  dots.forEach((d, idx) => d.addEventListener('click', () => show(idx)));
+}
+
 document.addEventListener('DOMContentLoaded', () => {
   injectLayout();
   setActiveNav();
@@ -242,4 +263,5 @@ document.addEventListener('DOMContentLoaded', () => {
   initUpiModal();
   initFaq();
   initExpandBtns();
+  initVolunteerSlider();
 });
