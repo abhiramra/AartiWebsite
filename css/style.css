@@ -350,7 +350,8 @@ p  { font-size: .95rem; color: var(--mid); }
 /* ---------- STORY / ABOUT PAGE ---------- */
 .page-story .section, .page-story .section-sm { padding: 3rem 0; }
 @media (max-width: 768px) { .page-story .section, .page-story .section-sm { padding: 2.25rem 0; } }
-.story-prose h3 { font-size: clamp(1.2rem,2.2vw,1.5rem); margin-top: 2.75rem; margin-bottom: .6rem; }
+.story-prose { text-align: center; }
+.story-prose h3 { font-size: clamp(1.2rem,2.2vw,1.5rem); margin-top: 2.75rem; margin-bottom: 1.1rem; }
 .story-prose h3:first-of-type { margin-top: 0; }
 
 /* ── Voice story page formatting ───────────────────────────── */
