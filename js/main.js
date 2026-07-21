@@ -15,7 +15,6 @@ const NAV_HTML = `
           <li><a href="about-history.html">Our Story &amp; Mission</a></li>
           <li><a href="about-milestones.html">Milestones</a></li>
           <li><a href="about-voicesofaarti.html">Voices of Aarti</a></li>
-          <li><a href="about-aartivillage.html">Aarti Village</a></li>
           <li><a href="about-humansofaarti.html">Humans of Aarti</a></li>
           <li><a href="about-annualreport.html">Annual Report</a></li>
         </ul>
@@ -77,7 +76,6 @@ const FOOTER_HTML = `
         <li><a href="about-history.html">Our Story &amp; Mission</a></li>
         <li><a href="about-milestones.html">Milestones</a></li>
         <li><a href="about-voicesofaarti.html">Voices of Aarti</a></li>
-        <li><a href="about-aartivillage.html">Aarti Village</a></li>
         <li><a href="about-humansofaarti.html">Humans of Aarti</a></li>
         <li><a href="about-annualreport.html">Annual Report</a></li>
       </ul>

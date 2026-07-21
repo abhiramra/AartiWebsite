@@ -9,9 +9,9 @@
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,300;0,400;0,500;0,600;0,700;1,300;1,400&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="css/style.css?v=2">
+  <link rel="stylesheet" href="css/style.css?v=3">
 </head>
-<body>
+<body class="page-tight">
 <div id="nav-placeholder"></div>
 <main>
 
@@ -21,16 +21,42 @@
     <p>Stories of resilience, hope, and transformation.</p>
   </div>
 
-  <!-- FEATURED VIDEO -->
+  <!-- FEATURED STORIES SLIDESHOW -->
   <section class="section">
     <div class="container" style="max-width:720px;">
       <div class="text-center mb-2">
-        <p class="sec-label">Featured Story</p>
-        <h2>Jayanthi's Journey</h2>
+        <h2>Featured Stories</h2>
       </div>
-      <div class="video-wrap">
-        <!-- CONTENT: Replace VIDEO_ID with Jayanthi's YouTube video ID -->
-        <iframe src="https://www.youtube.com/embed/VIDEO_ID" title="Jayanthi's Journey — Voices of Aarti" allowfullscreen loading="lazy"></iframe>
+      <div class="vol-slider">
+        <div class="vol-stage">
+          <button class="vol-arrow vol-prev" aria-label="Previous story">&#8249;</button>
+          <div class="vol-slides">
+            <div class="vol-slide is-active">
+              <div class="video-wrap">
+                <iframe src="https://www.youtube.com/embed/dBbfpNulysQ" title="Jayanthi's Story — Voices of Aarti" allowfullscreen loading="lazy"></iframe>
+              </div>
+              <div class="video-label">Jayanthi's Story</div>
+            </div>
+            <div class="vol-slide">
+              <div class="video-wrap">
+                <iframe src="https://www.youtube.com/embed/d9tuZq8CMiM" title="Sree Lakshmi's Story — Voices of Aarti" allowfullscreen loading="lazy"></iframe>
+              </div>
+              <div class="video-label">Sree Lakshmi's Story</div>
+            </div>
+            <div class="vol-slide">
+              <div class="video-wrap">
+                <iframe src="https://www.youtube.com/embed/H_Sa5EADcYI" title="Asma, Survivor of Child Marriage — Voices of Aarti" allowfullscreen loading="lazy"></iframe>
+              </div>
+              <div class="video-label">Asma — Survivor of Child Marriage</div>
+            </div>
+          </div>
+          <button class="vol-arrow vol-next" aria-label="Next story">&#8250;</button>
+        </div>
+        <div class="vol-dots">
+          <button class="vol-dot is-active" aria-label="Go to story 1"></button>
+          <button class="vol-dot" aria-label="Go to story 2"></button>
+          <button class="vol-dot" aria-label="Go to story 3"></button>
+        </div>
       </div>
     </div>
   </section>
