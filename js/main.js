@@ -29,13 +29,7 @@ const NAV_HTML = `
         </ul>
       </li>
       <li><a href="partners.html">Partners</a></li>
-      <li class="has-drop">
-        <button aria-expanded="false" aria-haspopup="true">News / Blogs <span class="nav-chevron">&#9660;</span></button>
-        <ul class="nav-drop">
-          <li><a href="news-blog.html">Blogs</a></li>
-          <li><a href="news.html">News</a></li>
-        </ul>
-      </li>
+      <li><a href="whats-new.html">What&rsquo;s New</a></li>
       <li><a href="volunteer.html">Volunteer</a></li>
       <li class="nav-donate">
         <a href="donate.html" class="btn btn-pink">Donate</a>
@@ -102,10 +96,9 @@ const FOOTER_HTML = `
         <li><a href="certifications.html">Certifications</a></li>
         <li><a href="faqs.html">FAQs</a></li>
       </ul>
-      <h4 style="margin-top:1.25rem;">News &amp; Blog</h4>
+      <h4 style="margin-top:1.25rem;">What&rsquo;s New</h4>
       <ul>
-        <li><a href="news.html">News</a></li>
-        <li><a href="news-blog.html">Blog</a></li>
+        <li><a href="whats-new.html">What&rsquo;s New</a></li>
       </ul>
     </div>
   </div>

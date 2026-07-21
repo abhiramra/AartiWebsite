@@ -1,0 +1,178 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>What's New | Aarti For Girls</title>
+  <meta name="description" content="The latest news, stories, and updates from Aarti For Girls.">
+  <link rel="icon" type="image/png" href="assets/images/logo.png">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,300;0,400;0,500;0,600;0,700;1,300;1,400&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="css/style.css?v=9">
+</head>
+<body>
+<div id="nav-placeholder"></div>
+<main>
+
+  <div class="page-header">
+    <p class="sec-label" style="color:rgba(255,255,255,.75)">News &amp; Stories</p>
+    <h1>What's New</h1>
+    <p>The latest news, stories, and updates from Aarti For Girls.</p>
+  </div>
+
+  <section class="section">
+    <div class="container">
+      <!-- Feed of posts -->
+      <div id="wn-list" class="news-grid"></div>
+      <!-- Single article view (shown when ?post=slug) -->
+      <article id="wn-post" style="max-width:760px;margin:0 auto;display:none;"></article>
+      <!-- Status / empty / loading messages -->
+      <p id="wn-status" style="text-align:center;color:var(--muted);"></p>
+    </div>
+  </section>
+
+</main>
+<div id="footer-placeholder"></div>
+<script src="js/main.js?v=9"></script>
+<script>
+(function () {
+  // ---- Sanity project config (filled in once the project is created) ----
+  var SANITY = { projectId: "YOUR_PROJECT_ID", dataset: "production", apiVersion: "2021-10-21" };
+
+  var listEl   = document.getElementById("wn-list");
+  var postEl   = document.getElementById("wn-post");
+  var statusEl = document.getElementById("wn-status");
+
+  function setStatus(msg) { statusEl.textContent = msg || ""; }
+
+  function esc(s) {
+    return String(s == null ? "" : s).replace(/[&<>"']/g, function (c) {
+      return { "&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;", "'": "&#39;" }[c];
+    });
+  }
+
+  function fmtDate(d) {
+    if (!d) return "";
+    try { return new Date(d).toLocaleDateString("en-GB", { day: "numeric", month: "long", year: "numeric" }); }
+    catch (e) { return ""; }
+  }
+
+  // Build a cdn.sanity.io URL for an image asset _ref (for images inside body text)
+  function refToUrl(ref) {
+    var m = /^image-([a-f\d]+)-(\d+x\d+)-(\w+)$/.exec(ref || "");
+    if (!m) return "";
+    return "https://cdn.sanity.io/images/" + SANITY.projectId + "/" + SANITY.dataset + "/" + m[1] + "-" + m[2] + "." + m[3];
+  }
+
+  // Minimal Portable Text -> HTML renderer (paragraphs, headings, quotes, lists, marks, links, images)
+  function renderSpans(children, markDefs) {
+    return (children || []).map(function (span) {
+      var t = esc(span.text || "");
+      (span.marks || []).forEach(function (mk) {
+        if (mk === "strong") t = "<strong>" + t + "</strong>";
+        else if (mk === "em") t = "<em>" + t + "</em>";
+        else if (mk === "underline") t = "<u>" + t + "</u>";
+        else {
+          var def = (markDefs || []).filter(function (d) { return d._key === mk; })[0];
+          if (def && def._type === "link" && def.href) t = '<a href="' + esc(def.href) + '" target="_blank" rel="noopener">' + t + "</a>";
+        }
+      });
+      return t;
+    }).join("");
+  }
+
+  function portableToHtml(blocks) {
+    if (!Array.isArray(blocks)) return "";
+    var html = "", listType = null;
+    function closeList() { if (listType) { html += "</" + listType + ">"; listType = null; } }
+    blocks.forEach(function (b) {
+      if (b._type === "image" && b.asset && b.asset._ref) {
+        closeList();
+        var u = refToUrl(b.asset._ref);
+        if (u) html += '<img src="' + u + '" alt="' + esc(b.alt || "") + '" loading="lazy" style="width:100%;border-radius:var(--r-l);margin:1.5rem 0;">';
+        return;
+      }
+      if (b._type !== "block") return;
+      var inner = renderSpans(b.children, b.markDefs);
+      if (b.listItem) {
+        var lt = b.listItem === "number" ? "ol" : "ul";
+        if (listType && listType !== lt) closeList();
+        if (!listType) { html += "<" + lt + ' style="margin:0 0 1rem 1.25rem;">'; listType = lt; }
+        html += "<li>" + inner + "</li>";
+        return;
+      }
+      closeList();
+      var st = b.style || "normal";
+      if (st === "blockquote") html += '<blockquote style="border-left:4px solid var(--pink);padding:.25rem 0 .25rem 1.25rem;margin:1.5rem 0;font-style:italic;">' + inner + "</blockquote>";
+      else if (/^h[1-6]$/.test(st)) html += "<" + st + ' style="margin:1.5rem 0 .5rem;">' + inner + "</" + st + ">";
+      else html += "<p>" + inner + "</p>";
+    });
+    closeList();
+    return html;
+  }
+
+  function sanityFetch(query, params) {
+    var base = "https://" + SANITY.projectId + ".apicdn.sanity.io/v" + SANITY.apiVersion + "/data/query/" + SANITY.dataset;
+    var usp = new URLSearchParams();
+    usp.set("query", query);
+    Object.keys(params || {}).forEach(function (k) { usp.set("$" + k, JSON.stringify(params[k])); });
+    return fetch(base + "?" + usp.toString()).then(function (r) {
+      if (!r.ok) throw new Error("HTTP " + r.status);
+      return r.json();
+    }).then(function (d) { return d.result; });
+  }
+
+  function renderList(posts) {
+    if (!posts || !posts.length) { setStatus("No posts yet — check back soon!"); return; }
+    setStatus("");
+    listEl.innerHTML = posts.map(function (p) {
+      var href = "whats-new.html?post=" + encodeURIComponent(p.slug || "");
+      var img = p.img ? '<img class="card-img" src="' + esc(p.img) + '" alt="' + esc(p.title) + '" loading="lazy">' : "";
+      return '<a class="card" href="' + href + '" style="color:inherit;">' + img +
+        '<div class="card-body">' +
+        (p.publishedAt ? '<div class="card-tag">' + esc(fmtDate(p.publishedAt)) + "</div>" : "") +
+        "<h3>" + esc(p.title) + "</h3>" +
+        (p.summary ? "<p>" + esc(p.summary) + "</p>" : "") +
+        '<span class="card-link">Read more &rarr;</span>' +
+        "</div></a>";
+    }).join("");
+  }
+
+  function renderPost(post) {
+    if (!post) { setStatus("That post could not be found."); return; }
+    setStatus("");
+    listEl.style.display = "none";
+    postEl.style.display = "block";
+    document.title = post.title + " | Aarti For Girls";
+    postEl.innerHTML =
+      '<a href="whats-new.html" style="font-size:.9rem;color:var(--pink);">&larr; Back to What’s New</a>' +
+      "<h1 style=\"margin:1rem 0 .3rem;\">" + esc(post.title) + "</h1>" +
+      (post.publishedAt ? '<p style="color:var(--muted);font-size:.85rem;margin-bottom:1.5rem;">' + esc(fmtDate(post.publishedAt)) + "</p>" : "") +
+      (post.img ? '<img src="' + esc(post.img) + '" alt="' + esc(post.title) + '" loading="lazy" style="width:100%;border-radius:var(--r-l);box-shadow:var(--sh-hov);margin-bottom:1.75rem;">' : "") +
+      portableToHtml(post.body) +
+      '<div style="margin-top:2rem;"><a href="whats-new.html" class="btn btn-outline">&larr; All Posts</a></div>';
+  }
+
+  function init() {
+    if (SANITY.projectId === "YOUR_PROJECT_ID") {
+      setStatus("What’s New is being set up — posts will appear here soon.");
+      return;
+    }
+    var slug = new URLSearchParams(location.search).get("post");
+    if (slug) {
+      setStatus("Loading…");
+      sanityFetch('*[_type == "post" && slug.current == $slug][0]{ title, publishedAt, "img": mainImage.asset->url, body }', { slug: slug })
+        .then(renderPost).catch(function () { setStatus("Sorry, we couldn’t load this post."); });
+    } else {
+      setStatus("Loading…");
+      sanityFetch('*[_type == "post" && defined(publishedAt)] | order(publishedAt desc){ _id, title, "slug": slug.current, publishedAt, summary, "img": mainImage.asset->url }')
+        .then(renderList).catch(function () { setStatus("Sorry, we couldn’t load posts right now."); });
+    }
+  }
+
+  init();
+})();
+</script>
+</body>
+</html>

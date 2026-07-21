@@ -161,6 +161,11 @@ p  { font-size: .95rem; color: var(--mid); }
 .tl-item h4 { font-size: .95rem; margin-bottom: .3rem; }
 .tl-item p  { font-size: .85rem; color: var(--muted); }
 
+/* ---------- WHAT'S NEW / ARTICLE ---------- */
+#wn-post p { font-size: .95rem; line-height: 1.8; color: var(--mid); margin-bottom: 1.1rem; }
+#wn-post h2, #wn-post h3, #wn-post h4 { color: var(--dark); }
+#wn-post a { color: var(--pink); text-decoration: underline; text-underline-offset: 2px; }
+
 /* ---------- MILESTONES TIMELINE ---------- */
 .tml { position: relative; max-width: 920px; margin: 0 auto; }
 .tml::before { content: ''; position: absolute; top: .5rem; bottom: .5rem; left: 50%; transform: translateX(-50%); width: 3px; background: var(--teal); opacity: .25; }
