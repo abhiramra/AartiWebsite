@@ -241,7 +241,8 @@ p  { font-size: .95rem; color: var(--mid); }
 /* ---------- BOARD / HUMANS ---------- */
 .board-grid { display:flex; flex-wrap:wrap; gap:1.5rem; justify-content:center; }
 .board-grid > * { width:180px; flex-shrink:0; }
-.board-card { text-align: center; }
+.board-card { text-align: center; display: flex; flex-direction: column; }
+.board-card .expand-btn { margin-top: auto; align-self: center; }
 .board-card img { width: 100%; aspect-ratio: 1; object-fit: cover; border-radius: var(--r-l); margin-bottom: .7rem; border: 3px solid var(--teal-pale); box-shadow: var(--sh); }
 .board-card h4 { font-size: .88rem; margin-bottom: .15rem; }
 .board-card p  { font-size: .78rem; color: var(--muted); }
