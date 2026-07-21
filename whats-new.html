@@ -25,6 +25,7 @@
     <div class="container">
       <!-- Feed of posts -->
       <div id="wn-list" class="news-grid"></div>
+      <div style="text-align:center;margin-top:2.5rem;"><button id="wn-more" class="btn btn-outline" style="display:none;">Show more</button></div>
       <!-- Single article view (shown when ?post=slug) -->
       <article id="wn-post" style="max-width:760px;margin:0 auto;display:none;"></article>
       <!-- Status / empty / loading messages -->
@@ -43,6 +44,8 @@
   var listEl   = document.getElementById("wn-list");
   var postEl   = document.getElementById("wn-post");
   var statusEl = document.getElementById("wn-status");
+  var moreBtn  = document.getElementById("wn-more");
+  var PAGE_SIZE = 9, allPosts = [], shownCount = 0;
 
   function setStatus(msg) { statusEl.textContent = msg || ""; }
 
@@ -123,26 +126,37 @@
     }).then(function (d) { return d.result; });
   }
 
+  function cardHtml(p) {
+    var href = "whats-new.html?post=" + encodeURIComponent(p.slug || "");
+    var img = p.img ? '<img class="card-img" src="' + esc(p.img) + '" alt="' + esc(p.title) + '" loading="lazy">' : "";
+    return '<a class="card" href="' + href + '" style="color:inherit;">' + img +
+      '<div class="card-body">' +
+      (p.publishedAt ? '<div class="card-tag">' + esc(fmtDate(p.publishedAt)) + "</div>" : "") +
+      "<h3>" + esc(p.title) + "</h3>" +
+      (p.summary ? "<p>" + esc(p.summary) + "</p>" : "") +
+      '<span class="card-link">Read more &rarr;</span>' +
+      "</div></a>";
+  }
+
+  function showMore() {
+    var next = allPosts.slice(shownCount, shownCount + PAGE_SIZE);
+    listEl.insertAdjacentHTML("beforeend", next.map(cardHtml).join(""));
+    shownCount += next.length;
+    moreBtn.style.display = shownCount < allPosts.length ? "inline-flex" : "none";
+  }
+
   function renderList(posts) {
     if (!posts || !posts.length) { setStatus("No posts yet — check back soon!"); return; }
     setStatus("");
-    listEl.innerHTML = posts.map(function (p) {
-      var href = "whats-new.html?post=" + encodeURIComponent(p.slug || "");
-      var img = p.img ? '<img class="card-img" src="' + esc(p.img) + '" alt="' + esc(p.title) + '" loading="lazy">' : "";
-      return '<a class="card" href="' + href + '" style="color:inherit;">' + img +
-        '<div class="card-body">' +
-        (p.publishedAt ? '<div class="card-tag">' + esc(fmtDate(p.publishedAt)) + "</div>" : "") +
-        "<h3>" + esc(p.title) + "</h3>" +
-        (p.summary ? "<p>" + esc(p.summary) + "</p>" : "") +
-        '<span class="card-link">Read more &rarr;</span>' +
-        "</div></a>";
-    }).join("");
+    allPosts = posts; shownCount = 0; listEl.innerHTML = "";
+    showMore();
   }
 
   function renderPost(post) {
     if (!post) { setStatus("That post could not be found."); return; }
     setStatus("");
     listEl.style.display = "none";
+    if (moreBtn) moreBtn.style.display = "none";
     postEl.style.display = "block";
     document.title = post.title + " | Aarti For Girls";
     postEl.innerHTML =
@@ -153,6 +167,8 @@
       portableToHtml(post.body) +
       '<div style="margin-top:2rem;"><a href="whats-new.html" class="btn btn-outline">&larr; All Posts</a></div>';
   }
+
+  if (moreBtn) moreBtn.addEventListener("click", showMore);
 
   function init() {
     if (SANITY.projectId === "YOUR_PROJECT_ID") {
