@@ -31,7 +31,7 @@
 /* ---------- RESET ---------- */
 *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
 html { scroll-behavior: smooth; }
-body { font-family: 'Poppins', sans-serif; color: var(--dark); background: var(--white); line-height: 1.7; -webkit-font-smoothing: antialiased; }
+body { font-family: 'Montserrat', sans-serif; color: var(--dark); background: var(--white); line-height: 1.7; -webkit-font-smoothing: antialiased; }
 img { max-width: 100%; height: auto; display: block; }
 a { color: inherit; text-decoration: none; }
 ul { list-style: none; }
