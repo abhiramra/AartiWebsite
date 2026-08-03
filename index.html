@@ -30,6 +30,17 @@
     </div>
   </section>
 
+  <!-- LATEST FROM WHAT'S NEW -->
+  <section class="section-sm">
+    <div class="container">
+      <div class="flex-between mb-2" style="flex-wrap:wrap;gap:1rem;">
+        <h2 style="margin:0;">What's New</h2>
+        <a href="whats-new.html" class="btn btn-outline">See more →</a>
+      </div>
+      <div id="home-feed" class="news-grid" style="grid-template-columns:repeat(2,1fr);"></div>
+    </div>
+  </section>
+
   <!-- AARTI AT A GLANCE -->
   <section class="section-sm bg-white">
     <div class="container">
@@ -39,7 +50,7 @@
       <div class="pillars-row">
         <div class="pillar-wrap">
           <div class="pillar-ring"><img src="assets/images/pillar-village.jpg" alt="Girls running at Aarti Village"></div>
-          <h3>Aarti Village</h3>
+          <h3>Aarti Home</h3>
           <a href="impact-care.html" style="font-size:.82rem;color:var(--pink);font-weight:600;margin-top:.5rem;display:inline-block;">Learn more →</a>
         </div>
         <div class="pillar-wrap">
@@ -98,7 +109,7 @@
       </div>
       <div class="grid-2" style="gap:3.5rem;">
         <div>
-          <p>Aarti began in 1992 with a single act of compassion. Our founder, Sandhya Puchalapalli, found a little, two-year-old girl abandoned on the roadside by her father after murdering her mother. Taking the girl under her wing wasn't just an act of kindness; it sparked a lifelong commitment. Today, that very girl is a thriving healthcare professional, a testament to the power of love and opportunity. This initial experience illuminated a deeper truth: behind every abandoned girl often lies a vulnerable mother. This realization led Aarti to evolve its approach, addressing not just the immediate need but also the root causes.</p>
+          <p>Aarti began in 1992 with a single act of compassion. Our founder, Sandhya Puchalapalli, found a little, two-year-old girl abandoned on the roadside by her father after killing her mother. Taking the girl under her wing wasn't just an act of kindness; it sparked a lifelong commitment. Today, that very girl is a thriving healthcare professional, a testament to the power of love and opportunity. This initial experience illuminated a deeper truth: behind every abandoned girl often lies a vulnerable mother. This realization led Aarti to evolve its approach, addressing not just the immediate need but also the root causes.</p>
           <p>Today, Aarti provides a safe haven for abandoned girls, quality education for underprivileged children, and support for mothers, creating pathways to a brighter future. We are immensely proud of our alumni – confident, value-driven young women who are building successful careers and happy families. Through love, security, guidance, and opportunity, they have truly blossomed.</p>
           <a href="about-history.html" class="btn btn-outline" style="margin-top:1.5rem;">Read Our Story</a>
         </div>
@@ -142,5 +153,27 @@
 </main>
 <div id="footer-placeholder"></div>
 <script src="js/main.js?v=11"></script>
+<script>
+(function(){
+  var S={projectId:"msim1zt1",dataset:"production",apiVersion:"2021-10-21"};
+  var el=document.getElementById("home-feed"); if(!el) return;
+  function esc(s){return String(s==null?"":s).replace(/[&<>"']/g,function(c){return{"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;","'":"&#39;"}[c];});}
+  function fmt(d){try{return new Date(d).toLocaleDateString("en-GB",{day:"numeric",month:"long",year:"numeric"});}catch(e){return"";}}
+  function hide(){var s=el.closest("section"); if(s) s.style.display="none";}
+  var q='*[_type=="post" && defined(publishedAt)] | order(publishedAt desc)[0...2]{ title, "slug": slug.current, publishedAt, summary, "img": mainImage.asset->url }';
+  fetch("https://"+S.projectId+".apicdn.sanity.io/v"+S.apiVersion+"/data/query/"+S.dataset+"?query="+encodeURIComponent(q))
+    .then(function(r){return r.json();})
+    .then(function(d){
+      var posts=(d&&d.result)||[];
+      if(!posts.length){ hide(); return; }
+      el.innerHTML=posts.map(function(p){
+        var href="whats-new.html?post="+encodeURIComponent(p.slug||"");
+        var img=p.img?'<img class="card-img" src="'+esc(p.img)+'" alt="'+esc(p.title)+'" loading="lazy">':"";
+        return '<a class="card" href="'+href+'" style="color:inherit;">'+img+'<div class="card-body">'+(p.publishedAt?'<div class="card-tag">'+esc(fmt(p.publishedAt))+'</div>':'')+'<h3>'+esc(p.title)+'</h3>'+(p.summary?'<p>'+esc(p.summary)+'</p>':'')+'<span class="card-link">Read more &rarr;</span></div></a>';
+      }).join("");
+    })
+    .catch(hide);
+})();
+</script>
 </body>
 </html>
